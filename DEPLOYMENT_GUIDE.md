@@ -23,6 +23,7 @@ SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhY
 ENVIRONMENT=production
 SECRET_KEY=uEHzXpsFzB-fFA4YDjLBf09W9QHVD__jby8W42eI9UI
 FRONTEND_URL=https://hr-dev-shi.vercel.app
+BACKEND_URL=https://hr-dev-shi.onrender.com
 
 # AI Service
 CEREBRAS_API_KEY=csk-yfykk3992ntf239vynnktnyftt5ppnyp4pcrrp3cdcr6rcpd
@@ -43,7 +44,7 @@ Based on your screenshots, configure:
 
 ### 3. Your Backend URL will be:
 ```
-https://hr-dashboard-backend.onrender.com
+https://hr-dev-shi.onrender.com
 ```
 
 ---

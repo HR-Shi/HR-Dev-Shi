@@ -39,8 +39,8 @@ class Settings(BaseSettings):
     SQL_DEBUG: bool = Field(False, description="If True SQLAlchemy will echo SQL")
 
     # Frontend / Backend URLs ---------------------------------------------
-    FRONTEND_URL: str = Field("http://localhost:5173", description="Allowed CORS origin for frontend")
-    BACKEND_URL: str = Field("http://localhost:8000", description="Public URL of the backend when deployed")
+    FRONTEND_URL: str = Field("https://hr-dev-shi.vercel.app", description="Allowed CORS origin for frontend")
+    BACKEND_URL: str = Field("https://hr-dev-shi.onrender.com", description="Public URL of the backend when deployed")
 
     # Supabase -------------------------------------------------------------
     SUPABASE_URL: str = "https://udaulvygaczcsrgybdqw.supabase.co"
