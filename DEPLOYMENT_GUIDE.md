@@ -55,7 +55,7 @@ https://hr-dashboard-backend.onrender.com
 In your Vercel project settings → Environment Variables:
 
 ```bash
-VITE_BACKEND_URL=https://hr-dashboard-backend.onrender.com/api/v1
+VITE_BACKEND_URL=https://hr-dev-shi.onrender.com/api/v1
 VITE_SUPABASE_URL=https://udaulvygaczcsrgybdqw.supabase.co
 VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkYXVsdnlnYWN6Y3NyZ3liZHF3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk4MzMyOTMsImV4cCI6MjA2NTQwOTI5M30.a9_SJERhQL_UAMWmvSrBdrZbDgFnPHaRpLWoOD-P33o
 ```

@@ -1,0 +1,36 @@
+# Backend files
+backend/
+*.py
+*.pyc
+__pycache__/
+*.db
+*.sql
+
+# Documentation
+*.md
+!README.md
+
+# Environment files
+.env*
+!.env.example
+
+# Development files
+.vscode/
+.idea/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Render config
+render.yaml
+
+# Large files that aren't needed for frontend
+supabase/
+*.bat
+*.sh 
