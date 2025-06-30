@@ -211,11 +211,16 @@ async def startup_event():
     
     # Create tables (if they don't exist)
     try:
-        Base.metadata.create_all(bind=engine)
-        logger.info("✅ Database tables verified/created")
+        if engine.dialect.name != "sqlite":
+            Base.metadata.create_all(bind=engine)
+            logger.info("✅ Database tables verified/created")
+        else:
+            logger.warning("⚠️ Skipping table creation for SQLite fallback engine (UUID types unsupported)")
     except Exception as e:
         logger.error(f"❌ Database table creation failed: {e}")
-        raise RuntimeError("Failed to create database tables")
+        # Don't crash the entire app for SQLite fallback; continue running
+        if engine.dialect.name != "sqlite":
+            raise RuntimeError("Failed to create database tables")
     
     # Initialize sample data for development
     if settings.ENVIRONMENT == "development":
