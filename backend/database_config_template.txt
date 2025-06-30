@@ -1,0 +1,15 @@
+# Database Configuration Template
+# Copy these settings to your .env file or set as environment variables
+
+# Supabase Database URL
+# Format: postgresql://postgres:[YOUR-PASSWORD]@db.[YOUR-PROJECT-REF].supabase.co:5432/postgres
+DATABASE_URL=postgresql://postgres:your_password@db.your_project_ref.supabase.co:5432/postgres
+
+# Example:
+# DATABASE_URL=postgresql://postgres:mySecretPassword@db.abcdefghijklmnop.supabase.co:5432/postgres
+
+# How to find your Supabase connection details:
+# 1. Go to your Supabase project dashboard
+# 2. Click on "Settings" → "Database"
+# 3. Scroll down to "Connection string" section
+# 4. Copy the URI and replace [YOUR-PASSWORD] with your actual password

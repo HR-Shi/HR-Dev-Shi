@@ -1,0 +1,6 @@
+# Additional dependencies for synthetic data generation
+faker==20.1.0
+numpy==1.24.3
+asyncpg==0.29.0
+psycopg2-binary==2.9.7
+python-dotenv==1.0.0 

@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "name": "hr-dashboard-frontend",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "framework": "vite",
+  "env": {
+    "VITE_BACKEND_URL": "https://your-backend.onrender.com/api/v1",
+    "VITE_SUPABASE_URL": "https://your-project.supabase.co",
+    "VITE_SUPABASE_ANON_KEY": "your_public_anon_key"
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+} 
