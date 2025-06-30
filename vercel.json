@@ -11,11 +11,6 @@
     }
   ],
   "framework": "vite",
-  "env": {
-    "VITE_BACKEND_URL": "https://your-backend.onrender.com/api/v1",
-    "VITE_SUPABASE_URL": "https://your-project.supabase.co",
-    "VITE_SUPABASE_ANON_KEY": "your_public_anon_key"
-  },
   "routes": [
     {
       "src": "/(.*)",

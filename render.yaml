@@ -1,23 +1,26 @@
 services:
   - type: web
     name: hr-dashboard-backend
-    env: python
+    env: docker
     plan: free
     region: oregon
     rootDir: backend
-    buildCommand: "pip install --no-cache-dir -r requirements.txt"
-    startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
+    dockerfilePath: ./Dockerfile
     autoDeploy: true
     envVars:
       - key: SUPABASE_DATABASE_URL
-        value: "${SUPABASE_DATABASE_URL}"
+        sync: false
       - key: SUPABASE_URL
-        value: "${SUPABASE_URL}"
+        sync: false
       - key: SUPABASE_ANON_KEY
-        value: "${SUPABASE_ANON_KEY}"
+        sync: false
       - key: SUPABASE_SERVICE_ROLE_KEY
-        value: "${SUPABASE_SERVICE_ROLE_KEY}"
+        sync: false
       - key: FRONTEND_URL
-        value: "${FRONTEND_URL}"
+        sync: false
       - key: ENVIRONMENT
-        value: "production" 
+        value: "production"
+      - key: CEREBRAS_API_KEY
+        sync: false
+      - key: SECRET_KEY
+        sync: false 

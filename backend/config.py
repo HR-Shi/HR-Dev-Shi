@@ -63,7 +63,8 @@ class Settings(BaseSettings):
 
     # Third-party APIs ------------------------------------------------------
     CEREBRAS_API_KEY: str | None = Field(
-        None, description="API key for Cerebras inference or similar service"
+        "csk-yfykk3992ntf239vynnktnyftt5ppnyp4pcrrp3cdcr6rcpd", 
+        description="API key for Cerebras inference or similar service"
     )
 
     class Config:
