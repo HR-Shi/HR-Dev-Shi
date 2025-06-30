@@ -1,7 +1,15 @@
 import os
 import json
 from typing import List, Dict, Any, Optional
-from cerebras.cloud.sdk import Cerebras
+
+# ---------------------------------------------------------------------------
+# Optional Cerebras SDK import
+# ---------------------------------------------------------------------------
+try:
+    from cerebras.cloud.sdk import Cerebras  # type: ignore
+except ModuleNotFoundError:  # pragma: no cover
+    Cerebras = None  # Fallback for environments where SDK is not installed
+
 from pydantic import BaseModel
 import logging
 
@@ -12,11 +20,14 @@ logger = logging.getLogger(__name__)
 class AIService:
     def __init__(self):
         self.api_key = os.environ.get("CEREBRAS_API_KEY")
-        if self.api_key:
+        if self.api_key and Cerebras is not None:
             self.client = Cerebras(api_key=self.api_key)
         else:
             self.client = None
-            logger.warning("CEREBRAS_API_KEY not set - AI service will use fallback responses")
+            if not self.api_key:
+                logger.warning("CEREBRAS_API_KEY not set - AI service will use fallback responses")
+            elif Cerebras is None:
+                logger.warning("cerebras-cloud-sdk not installed - AI service will use fallback responses")
         self.model = "llama-3.3-70b"
     
     def _make_completion(self, system_prompt: str, user_prompt: str, max_tokens: int = 8192) -> str:
