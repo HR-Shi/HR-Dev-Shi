@@ -1,27 +1,23 @@
 from sqlalchemy import create_engine, text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-import os
 import time
 import logging
-from dotenv import load_dotenv
 
-load_dotenv()
+# Centralized settings
+from config import settings
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Supabase database configuration
-SUPABASE_DATABASE_URL = os.getenv(
-    "SUPABASE_DATABASE_URL",
-    os.getenv("DATABASE_URL", "postgresql://postgres:postgres@localhost/hr_dashboard")
-)
+SUPABASE_DATABASE_URL = settings.SUPABASE_DATABASE_URL
 
 # Additional Supabase configuration
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_ANON_KEY = os.getenv("SUPABASE_ANON_KEY")
-SUPABASE_SERVICE_ROLE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
+SUPABASE_URL = settings.SUPABASE_URL
+SUPABASE_ANON_KEY = settings.SUPABASE_ANON_KEY
+SUPABASE_SERVICE_ROLE_KEY = settings.SUPABASE_SERVICE_ROLE_KEY
 
 def create_database_engine():
     """Create database engine with multiple connection strategies"""
@@ -60,7 +56,7 @@ def create_database_engine():
                 max_overflow=10,
                 pool_pre_ping=True,
                 pool_recycle=3600,
-                echo=os.getenv("SQL_DEBUG", "false").lower() == "true",
+                echo=bool(settings.SQL_DEBUG),
                 connect_args=config["connect_args"]
             )
             

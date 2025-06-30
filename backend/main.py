@@ -111,7 +111,7 @@ app.add_middleware(
         "http://localhost:5173",
         "http://127.0.0.1:3000",
         "http://127.0.0.1:5173",
-        os.getenv("FRONTEND_URL", "http://localhost:3000")
+        settings.FRONTEND_URL,
     ],
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
@@ -122,7 +122,7 @@ app.add_middleware(
 app.add_middleware(SecurityHeadersMiddleware)
 
 # Add rate limiting (more permissive for development)
-if os.getenv("ENVIRONMENT", "development") == "production":
+if settings.ENVIRONMENT == "production":
     app.add_middleware(RateLimitMiddleware, calls=1000, period=60)
 else:
     app.add_middleware(RateLimitMiddleware, calls=10000, period=60)
@@ -218,7 +218,7 @@ async def startup_event():
         raise RuntimeError("Failed to create database tables")
     
     # Initialize sample data for development
-    if os.getenv("ENVIRONMENT", "development") == "development":
+    if settings.ENVIRONMENT == "development":
         await init_sample_data()
     
     logger.info("🎯 HR Dashboard API ready!")
@@ -295,7 +295,7 @@ async def get_system_info():
         "data": {
             "name": "HR Dashboard API",
             "version": "2.0.0",
-            "environment": os.getenv("ENVIRONMENT", "development"),
+            "environment": settings.ENVIRONMENT,
             "database": "Supabase PostgreSQL",
             "features": {
                 "authentication": True,
@@ -418,6 +418,6 @@ if __name__ == "__main__":
         "main:app",
         host="0.0.0.0",
         port=8000,
-        reload=True if os.getenv("ENVIRONMENT", "development") == "development" else False,
+        reload=True if settings.ENVIRONMENT == "development" else False,
         log_level="info"
     ) 

@@ -4,13 +4,12 @@ Provides get_db_connection dependency for FastAPI routers
 """
 
 import asyncpg
-import os
 import logging
 from typing import Optional
-from dotenv import load_dotenv
 import urllib.parse as urlparse
 
-load_dotenv()
+# Centralized settings
+from config import settings
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -52,8 +51,8 @@ class DatabaseService:
         """Get database URL from environment variables"""
         # Try different environment variable names
         db_url = (
-            os.getenv('DATABASE_URL') or 
-            os.getenv('SUPABASE_DATABASE_URL') or
+            settings.DATABASE_URL or 
+            settings.SUPABASE_DATABASE_URL or
             "postgresql://postgres:password@localhost:5432/hr_dashboard"
         )
         
