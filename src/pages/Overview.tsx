@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Card } from '../components/ui/Card';
-import { Badge } from '../components/ui/Badge';
+import { Card } from '../components/ui/card';
+import { Badge } from '../components/ui/badge';
 import { EngagementChart } from '../components/charts/EngagementChart';
 import { KPIGauge } from '../components/charts/KPIGauge';
 import { dashboardAPI } from '../api';
